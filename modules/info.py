@@ -35,6 +35,9 @@ help_message = '''
     --encrypt   Encrypt all files
     --decrypt   Decrypt all files
     --verbose   Active verbose mode, default is False
+
+Example:
+    python3 cryptondie.py --dir /var/www/ --key 0123456789abcdef --encrypt --verbose
     '''
 
 def log(msg):
