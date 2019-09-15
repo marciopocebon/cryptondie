@@ -32,7 +32,7 @@ Example:
 ```bash
 docker build -t cryptondie .
 docker run -it cryptondie /bin/bash
-python cryptondie.py --dir /etc --key 0123456789abcdef --encrypt --verbose
+python cryptondie.py --dir /var/www/ --key 0123456789abcdef --encrypt --verbose
 ```
 
 ### which encryption is implemented?
