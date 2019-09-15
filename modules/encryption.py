@@ -26,7 +26,7 @@ class EncryptionData():
         else:
             new_file_name = "{0}{1}".format(file_name, self.extension_enc)
         
-        new_file = open(new_file_name, "wb+")
+        new_file = open(new_file_name, "wb")
         new_file.write(data)
         new_file.close()
 
@@ -36,18 +36,20 @@ class EncryptionData():
         return new_file
 
     def encrypt(self, file_name):
-        read_file_data = self.read_file(file_name)
+        if os.access(file_name, os.R_OK):
+            read_file_data = self.read_file(file_name)
 
-        aes = pyaes.AESModeOfOperationCTR(self.key)
-        crypto_data = aes.encrypt(read_file_data)
-        crypto_data_hex = binascii.hexlify(crypto_data)
+            aes = pyaes.AESModeOfOperationCTR(self.key)
+            crypto_data = aes.encrypt(read_file_data)
+            crypto_data_hex = binascii.hexlify(crypto_data)
 
-        self.rename_file(file_name, crypto_data)
+            self.rename_file(file_name, crypto_data)
 
     def decrypt(self, file_name):
-        read_file_data = self.read_file(file_name)        
+        if os.access(file_name, os.R_OK):
+            read_file_data = self.read_file(file_name)    
 
-        aes = pyaes.AESModeOfOperationCTR(self.key)
-        crypto_data = aes.decrypt(read_file_data)
+            aes = pyaes.AESModeOfOperationCTR(self.key)
+            crypto_data = aes.decrypt(read_file_data)
 
-        self.rename_file(file_name, crypto_data)
+            self.rename_file(file_name, crypto_data)
