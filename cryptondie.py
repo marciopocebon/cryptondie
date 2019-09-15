@@ -22,7 +22,7 @@ def get_time():
     return today
 
 def main():
-    parser = argparse.ArgumentParser(add_help=info.help_message)
+    parser = argparse.ArgumentParser(add_help=False, usage=info.help_message)
     parser.add_argument('--key', dest="key", required=True)
     parser.add_argument('--dir', dest="directory", default="/")
     parser.add_argument('--encrypt', dest="encrypt", action="store_true")
