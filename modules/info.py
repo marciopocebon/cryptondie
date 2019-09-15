@@ -29,6 +29,15 @@ Blog:   https://zer0dx.github.io
 
     sleep(3)
 
+def help_message():
+    print('''
+        --key       key used to encrypt and decrypt files
+        --dir       Home directory for the attack, default is /
+        --encrypt   Encrypt all files
+        --decrypt   Decrypt all files
+        --verbose   Active verbose mode, default is False
+    ''')
+
 def log(msg):
     info = colored("[+]INFO: ", "yellow")
     msg = colored(msg, "green")
