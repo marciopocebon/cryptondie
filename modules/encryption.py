@@ -4,7 +4,8 @@ import pyaes
 
 class EncryptionData():
     def __init__(self, key):
-        self.key = key
+        #str.encode() convert string to bytes
+        self.key = str.encode(key)
         self.extension_enc = ".crypton"
         self.extension_dec = ".descrypton"
         self.remove_file = True
