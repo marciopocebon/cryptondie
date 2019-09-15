@@ -6,8 +6,7 @@ class EncryptionData():
     def __init__(self, key):
         #str.encode() convert string to bytes
         self.key = str.encode(key)
-        self.extension_enc = ".crypton"
-        self.extension_dec = ".descrypton"
+        self.extension_enc = ".cryptondie"
         self.remove_file = True
 
     def read_file(self, data):
@@ -20,8 +19,11 @@ class EncryptionData():
     def rename_file(self, file_name, data):
         if self.extension_enc in file_name:
             file_name = file_name.replace(self.extension_enc, "")
+
+            new_file_name = "{0}".format(file_name)
+            os.remove("{0}{1}".format(new_file_name, self.extension_enc))
+
             self.remove_file = False
-            new_file_name = "{0}{1}".format(file_name, self.extension_dec)
 
         else:
             new_file_name = "{0}{1}".format(file_name, self.extension_enc)
